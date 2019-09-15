@@ -1,0 +1,22 @@
+@import "bootstrap";
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
+
+.booyah-box {
+  -moz-box-shadow: 1px 1px 2px 0 #d0d0d0;
+  -webkit-box-shadow: 1px 1px 2px 0 #d0d0d0;
+  box-shadow: 1px 1px 2px 0 #d0d0d0;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-color: #e4e4e4 #bebebd #bebebd #e4e4e4;
+}
+
+.navbar {
+  box-shadow: 0px 1px 3px #2a2a2a;
+  background: image_url('circle-blues.png');
+}
+
+.navbar-inverse .navbar-brand {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 16px;
+  color: white;
+}
