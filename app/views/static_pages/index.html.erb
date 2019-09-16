@@ -1,15 +1,34 @@
 <div class = "hero">
   <br />
   <div class = "frosty col-10 offset-1">
+    <h2>Video games ruined my life,</h1>
     <br />
-    <h1>Video games ruined my life,</h1>
-    <br />  <div class = "vl"></div>
-    <h2 class = "a">good thing I have two extra lives.</h2>
-    <br /><br />
-  </div>
+    <h1>good thing I have two extra lives.</h2>
+    <br/>
+    <hr>
+    <br/>
+    New here? Create a free account now!
+    <br /><br/>
+    <%= form_for(:user, url: registration_path(:user)) do |f| %>
+      <div class = "form-group">
+        <%= f.text_field :email, :placeholder => "e-mail", class: "col-sm-2" %>
+      </div>
+      <div class = "form-group">
+        <%= f.text_field :password, :placeholder => "password", class: "col-sm-2" %>
+        <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %>
+      </div>
+      <div class = "form-group">
+        <%= f.text_field :password_confirmation, :placeholder => "confirm password", class: "col-sm-2" %>
+      </div>
+      <div class="actions">
+        <%= f.submit 'Register', class: "btn btn-primary" %>
+      </div>
+    <% end %>
 </div>
 
-<br />
+<br/><br/><br/><br/>
 
 <div class="row feature text-center">
   <div class="col-12 col-sm">

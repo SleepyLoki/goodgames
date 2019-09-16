@@ -14,7 +14,29 @@
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <a class="navbar-brand" href="#">GoodGames</a>
+      <%= link_to 'GoodGames', root_path, class: 'navbar-brand' %>
+
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav">
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+            </li>
+          <% else %>
+            <li>
+              <%= form_for(:user, :url => session_path(:user), html: { class: "navbar-form navbar-right form-inline" }) do |f| %>
+                <div class = "form-group">
+                  <%= f.text_field :email, :placeholder => "e-mail", class: "form-control" %>
+                </div>
+                <div class = "form-group">
+                  <%= f.password_field :password, :placeholder => "password", class: "form-control" %>
+                </div>
+                <%= f.submit 'Sign In', class: "btn btn-success" %>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
     </nav>
 
     <%= yield %>
