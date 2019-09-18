@@ -19,6 +19,8 @@ body {
 .navbar {
   box-shadow: 0px 1px 3px #2a2a2a;
   background: image_url('circle-blues.png');
+  display: flex;
+  justify-content: space-between;
 }
 
 .navbar-inverse .navbar-brand {
@@ -98,4 +100,17 @@ hr {
 
 .topnav-right {
   float: right;
+}
+
+@media only screen and (min-width: 992px){
+  .navbar-toggleable-md .navbar-collapse {
+    width: auto;
+  }
+}
+
+.alert {
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+  height: 50px;
 }
