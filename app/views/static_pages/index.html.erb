@@ -1,17 +1,21 @@
 <div class = "hero">
   <br />
   <div class = "frosty col-10 offset-1">
-    <h2>Video games ruined my life,</h1>
-    <br />
-    <h1>good thing I have two extra lives.</h2>
-    <br/>
-    <hr>
-    <br/>
-    New here? Create a free account now!
-    <br /><br/>
     <% if user_signed_in? %>
-      You are currently signed in!
+      <h1>Welcome Back</h1><h2><%=current_user.first_name%></h2>
+      <br /><br />
+      <hr/>
+      <br /><br />
+      <h3>Visit your <%= link_to 'Home Page', dashboard_path, class: "link-text" %> now!</h3>
     <% else %>
+      <h2>Video games ruined my life,</h1>
+      <br />
+      <h1>good thing I have two extra lives.</h2>
+      <br/>
+      <hr>
+      <br/>
+      New here? Create a free account now!
+      <br /><br/>
       <%= link_to 'Register', new_user_registration_path, class: 'btn btn-info' %>
     <% end %>
 </div>

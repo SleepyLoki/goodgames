@@ -6,27 +6,27 @@
       <%= render "devise/shared/error_messages", resource: resource %>
       <div class = 'row justify-content-center'>
         <div class = "field col">
-          first name<br>
+          First Name<br>
           <%= f.text_field :first_name, autofocus: true %>
         </div>
         <div class = "field col">
-          last name<br>
+          Last Name<br>
           <%= f.text_field :last_name %>
         </div>
       </div>
       <br />
       <div class = "field">
-        short bio<br>
+        Short Bio<br>
         <%= f.text_area :bio, rows: 5, cols: 50, placeholder: "What games you like to play? What is your favorite game? Describe yourself here... " %>
       </div>
       <br />
       <div class="field">
-        email<br />
+        E-mail<br />
         <%= f.email_field :email %>
       </div>
       <br />
       <div class="field">
-        password<br/>
+        Password<br/>
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
         <% end %><br />
@@ -34,7 +34,7 @@
       </div>
       <br />
       <div class="field">
-        password confirmation<br />
+        Password confirmation<br />
         <%= f.password_field :password_confirmation %>
       </div>
       <br />

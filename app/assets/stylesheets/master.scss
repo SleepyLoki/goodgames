@@ -23,6 +23,10 @@ body {
   justify-content: space-between;
 }
 
+.li {
+  float: left;
+}
+
 .navbar-inverse .navbar-brand {
   font-family: 'Press Start 2P', cursive;
   font-size: 16px;
@@ -45,6 +49,14 @@ body {
   height: 570px;
   padding: 50px;
   text-align: center;
+}
+
+.fa{
+  color: greenyellow;
+}
+
+.fa:hover, .fa:focus {
+  color: gold;
 }
 
 .frosty h1 {
@@ -113,6 +125,15 @@ hr {
   width: 100%;
   z-index: 2;
   height: 50px;
+}
+
+.link-text {
+  color: greenyellow;
+}
+
+.link-text:hover {
+  text-decoration: none;
+  color: gold;
 }
 
 .form-background {

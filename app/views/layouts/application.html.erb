@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script src="https://use.fontawesome.com/caad921b57.js"></script>
     <title>Goodgames</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -17,27 +18,40 @@
       <%= link_to 'GoodGames', root_path, class: 'navbar-brand' %>
 
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="nav justify-content-end">
-          <% if user_signed_in? %>
+        <% if user_signed_in? %>
+          <ul class="nav justify-content-center">
+            <br />
             <li class="nav-item">
-              <a class="nav-link" href="#">Home</a>
+              <%= link_to dashboard_path, :title => "Home" do %><span class = "fa fa-home fa-3x fa-fw"></span><% end %>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">My Games</a>
+              <%= link_to '#', :title => "My Games Collection" do %><span class = "fa fa-gamepad fa-3x fa-fw"></span><% end %>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Browse</a>
+              <%= link_to '#', :title => "Browse" do %><span class = "fa fa-search fa-3x fa-fw"></span><% end %>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Community</a>
+              <%= link_to '#', :title => "Community" do %><span class = "fa fa-globe fa-3x fa-fw"></span><% end %>
+            </li>
+          </ul>
+          <br />
+          <ul class = "nav justify-content-end">
+            <li class="nav-item">
+              <%= link_to '#', :title => "Following" do %><span class = "fa fa-users fa-3x fa-fw"></span><% end %>
+            </li>
+            <li class="nav-item">
+              <%= link_to '#', :title => "My Account" do %><span class = "fa fa-user-circle-o fa-3x fa-fw"></span><% end %>
             </li>
             <li class="nav-item">
               <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
             </li>
-          <% else %>
-            <%= link_to 'Sign In', new_user_session_path, class: "btn btn-success" %>
-          <% end %>
-        </ul>
+          </ul>
+        <% else %>
+          <ul class = "nav justify-content-end">
+            <li class="nav-item">
+              <%= link_to 'Sign In', new_user_session_path, class: "btn btn-success" %>
+          </ul>
+        <% end %>
       </div>
     </nav>
     
