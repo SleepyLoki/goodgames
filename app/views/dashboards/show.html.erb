@@ -1,4 +1,11 @@
 <div class = "booyah-box">
   <br />
   <h1>My Dashboard</h1>
+  <br />
+  <h2>Currently Playing</h3>
+  <% @games.each do |game| %>
+    <h3><%=game.title%></h3>
+    <br />
+    <%= game.description %>
+  <% end %>
 </div>
