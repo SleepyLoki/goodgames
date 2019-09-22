@@ -1,11 +1,32 @@
-<div class = "booyah-box">
+<div class="container-fluid booyah-box fancy">
   <br />
-  <h1>My Dashboard</h1>
+  <div class="row dashboard-header">
+    <div class="col currently-playing">
+      <div class = "dashboard-header-title">Currently Playing</div>
+      <br /><br />
+      <% @games.each do |game| %>
+        <div class = "gamebox-art"></div>
+        <br />
+        <div class = "game-title"><%= game.title %></div>
+        <br />
+        <%= game.platform %>
+        <br />
+        <%= game.release_date %>
+        <br />
+        <%= game.developer %>
+      <% end %>
+    </div>
+    <div style="border-left:1px solid #000"></div>
+    <div class="col-6 text-center">
+      <div class = "dashboard-header-title">Want to Play (wider)</div>
+    </div>
+    <div style="border-left:1px solid #000"></div>
+    <div class="col text-center">
+      <div class = "dashboard-header-title">How many completed a year</div>
+    </div>
+  </div>
   <br />
-  <h2>Currently Playing</h3>
-  <% @games.each do |game| %>
-    <h3><%=game.title%></h3>
-    <br />
-    <%= game.description %>
-  <% end %>
+</div>
+<br /><br />
+<div class = "booyah-box col-10 offset-1">
 </div>
