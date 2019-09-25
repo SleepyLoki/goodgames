@@ -1,0 +1,15 @@
+<br />
+<h1 class = "text-center">My Games</h1>
+<br /><br />
+<% @games.each do |game| %>
+  <br />
+  <div class = "text-center booyah-box col-4 offset-4">
+    <%= game.title %>
+    <br />
+    <%= game.platform %>
+    <br />
+    <%= game.release_date %>
+    <br />
+    <%= game.developer %>
+  </div>
+<% end %>

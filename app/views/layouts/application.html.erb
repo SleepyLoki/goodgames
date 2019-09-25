@@ -11,6 +11,14 @@
   </head>
 
   <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+      $(function(){
+        $.get("https://chicken-coop.fr/rest/games?title=[Tomb Raider]", function(data){
+          console.log(data);
+        });
+      });
+    </script>
     <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -25,10 +33,10 @@
               <%= link_to dashboard_path, :title => "Home" do %><span class = "fa fa-home fa-3x fa-fw"></span><% end %>
             </li>
             <li class="nav-item">
-              <%= link_to '#', :title => "My Games Collection" do %><span class = "fa fa-gamepad fa-3x fa-fw"></span><% end %>
+              <%= link_to my_games_path, :title => "My Games Collection" do %><span class = "fa fa-gamepad fa-3x fa-fw"></span><% end %>
             </li>
             <li class="nav-item">
-              <%= link_to '#', :title => "Browse" do %><span class = "fa fa-search fa-3x fa-fw"></span><% end %>
+              <%= link_to games_path, :title => "Browse" do %><span class = "fa fa-search fa-3x fa-fw"></span><% end %>
             </li>
           </ul>
           <br />
