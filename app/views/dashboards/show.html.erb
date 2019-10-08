@@ -1,7 +1,8 @@
-<div class="container-fluid booyah-box fancy">
+<div class="container-fluid booyah-box">
   <br />
   <div class="row dashboard-header">
     <div class="col currently-playing">
+      <br />
       <div class = "dashboard-header-title">Currently Playing</div>
       <br /><br />
       <% @games.each do |game| %>
@@ -11,17 +12,16 @@
         <br />
         <%= game.platform %>
         <br />
-        <%= game.release_date %>
-        <br />
-        <%= game.developer %>
       <% end %>
     </div>
-    <div style="border-left:1px solid #000"></div>
+    <div style="border-left:1px solid #FFD700"></div>
     <div class="col-6 text-center">
+      <br />
       <div class = "dashboard-header-title">Want to Play (wider)</div>
     </div>
-    <div style="border-left:1px solid #000"></div>
+    <div style="border-left:1px solid #FFD700"></div>
     <div class="col text-center">
+      <br />
       <div class = "dashboard-header-title">How many completed a year</div>
     </div>
   </div>
