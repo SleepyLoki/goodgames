@@ -1,6 +1,5 @@
 class Game < ApplicationRecord
-  has_many :cp_games
-  has_many :users, :through => :cp_games
+  belongs_to :users
 
   def self.search(term)
     if term

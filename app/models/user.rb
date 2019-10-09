@@ -1,6 +1,5 @@
 class User < ApplicationRecord
-  has_many :cp_games
-  has_many :games, through: :cp_games
+  has_many :games
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
