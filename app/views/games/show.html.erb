@@ -1,18 +1,13 @@
-<h1>Search for games to add to collection!</h1>
-<br /><br />
-
-<%= form_tag(games_path, method: :get) do %>
-  <%= text_field_tag :term %>
-  <%= submit_tag 'Search', name: nil %>
-<% end %>
-
-<br /><br />
-
-<% @games.each do |game| %>
+<br />
+<div class="booyah-box col-10 offset-1">
   <br />
-  <div class = "text-center booyah-box col-4 offset-4">
-    <%= game.title %>
-    <br />
-    <%= game.platform %>
-  </div>
-<% end %>
+  <h1><%= @game.title %></h1>
+  <br/>
+  <div id = "player"></div>
+  <br /><br />
+  <i><%= @game.description %></i>
+  <br/><br/>
+  <p><%= @game.platform %></p>
+</div>
+
+<script src="assets/javascripts/youtubeScript.js"></script>

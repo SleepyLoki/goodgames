@@ -3,5 +3,6 @@ class DashboardsController < ApplicationController
   
   def show
     @games = current_user.games
+    @user = current_user
   end
 end

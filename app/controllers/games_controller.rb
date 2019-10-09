@@ -1,7 +1,11 @@
 class GamesController < ApplicationController
-  def show
-    @games = current_user.games
+
+  def search
     @games = Game.search(params[:term])
+  end
+
+  def show
+    @game = Game.find(params[:id])
   end
 
   private
