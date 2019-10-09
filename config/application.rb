@@ -20,10 +20,12 @@ end
 
 class Application < Rails::Application
   # Access-Control-Allow-Origin
-  config.middleware.insert_before 0, Rack::Cors do
+  config.middleware.use Rack::Cors do
     allow do
       origins '*'
-      resource '*', :headers => :any, :methods => :any
+      resource %r{/users/\d+.json},
+        :headers => ['Origin', 'Accept', 'Content-Type'],
+        :methods => [:put, :delete]
     end
   end
 end
