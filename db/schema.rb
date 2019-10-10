@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_22_185007) do
+ActiveRecord::Schema.define(version: 2019_10_10_204751) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cp_games", force: :cascade do |t|
+    t.bigint "game_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_cp_games_on_game_id"
+    t.index ["user_id"], name: "index_cp_games_on_user_id"
+  end
+
+  create_table "cps", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "game_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_id"], name: "index_cps_on_game_id"
+    t.index ["user_id", "game_id"], name: "index_cps_on_user_id_and_game_id"
+  end
 
   create_table "games", force: :cascade do |t|
     t.string "title"
@@ -28,6 +46,7 @@ ActiveRecord::Schema.define(version: 2019_09_22_185007) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "YoutubeLink"
     t.index ["user_id"], name: "index_games_on_user_id"
   end
 
@@ -46,4 +65,6 @@ ActiveRecord::Schema.define(version: 2019_09_22_185007) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "cp_games", "games"
+  add_foreign_key "cp_games", "users"
 end

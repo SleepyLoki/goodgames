@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resource :dashboard, only: [:show]
   resource :user_accounts
   resource :my_games, only: [:show]
-  resources :games
+  resources :games do
+    resources :cps, only: [:create, :destroy]
+  end
   get 'search', to: 'games#search', as: :search_games
 end

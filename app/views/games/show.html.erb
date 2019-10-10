@@ -5,6 +5,11 @@
 <div class="booyah-box col-10 offset-1">
   <br />
   <h1><%= @game.title %></h1>
+  <% if current_user && current_user.cp?(@game) %>
+    <%= link_to 'Remove from Currently Playing', game_cp_path(@game), class: 'btn btn-warning', method: :delete %>
+  <% else %>
+    <%= link_to 'Currently Playing', game_cps_path(@game), class: 'btn btn-primary', method: :post %>
+  <% end %>
   <br/>
   <i><%= @game.description %></i>
   <br/><br/>
