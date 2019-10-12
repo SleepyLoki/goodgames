@@ -1,5 +1,5 @@
 class Game < ApplicationRecord
-  belongs_to :users
+  belongs_to :user
   has_many :cps
 
   def self.search(term)
