@@ -2,14 +2,18 @@
 <h1 class = "text-center">My Games</h1>
 <br /><br />
 <% @games.each do |game| %>
-  <br />
-  <div class = "text-center booyah-box col-4 offset-4">
-    <%= game.title %>
+  <% if current_user.cps.count == 0 %>
+    <%= link_to 'Search for Games', search_games_path %>
+  <% elsif current_user && current_user.cp?(game) %>
     <br />
-    <%= game.platform %>
-    <br />
-    <%= game.release_date %>
-    <br />
-    <%= game.developer %>
-  </div>
+    <div class = "text-center booyah-box col-4 offset-4">
+      <%= game.title %>
+      <br />
+      <%= game.platform %>
+      <br />
+      <%= game.release_date %>
+      <br />
+      <%= game.developer %>
+    </div>
+  <% end %>
 <% end %>
