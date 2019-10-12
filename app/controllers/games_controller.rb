@@ -6,7 +6,7 @@ class GamesController < ApplicationController
 
   def create
     @game = Game.create(new_game_params)
-    redirect_to search_games_path(@game)
+    redirect_to dashboard_path
   end
 
   def search
@@ -20,7 +20,7 @@ class GamesController < ApplicationController
   private
 
   def new_game_params
-    params.require(:game).permit(:title, :genre, :meta_score, :platform, :description, :developer, :publisher, :release_date, :esrb_rating, :YoutubeLink)
+    params.require(:game).permit(:title, :genre, :meta_score, :platform, :description, :developer, :publisher, :release_date, :esrb_rating)
   end
 
   def games_params
