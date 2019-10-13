@@ -11,7 +11,7 @@
         <% elsif current_user && current_user.cp?(game) %>
           <div class = "gamebox-art"></div>
           <br />
-          <div class = "game-title"><%= game.title %></div>
+          <div class = "game-title"><%= link_to game.title, game_path(game) %></div>
           <br />
           <%= game.platform %>
           <br />

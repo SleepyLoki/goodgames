@@ -7,8 +7,9 @@ class CpsController < ApplicationController
   end
 
   def destroy
-    current_user.cps.delete(current_game)
-    redirect_to game_path(current_game)
+    @cp = current_user.cps.include?(@game)
+    @cp.destroy
+    redirect_to root_path
   end
 
   private
