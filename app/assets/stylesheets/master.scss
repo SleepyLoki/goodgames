@@ -155,7 +155,7 @@ hr {
 }
 
 .dashboard-header {
-  height: 240px;
+  height: 250px;
   font-family: 'Press Start 2P', cursive;
   font-size: 8px;
   margin: 5px;
@@ -171,15 +171,11 @@ hr {
 }
 
 .gamebox-art {
-  margin-left: 36%;
+  margin: auto;
   width: 90px;
   height: 100px;
   border: 1px solid blue;
   background-color: blue;
-}
-
-.currently-playing {
-  text-align: right;
 }
 
 .game-title {

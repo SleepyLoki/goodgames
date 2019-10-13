@@ -1,38 +1,95 @@
-<div class="container-fluid booyah-box">
-  <br />
-  <div class="row dashboard-header">
-    <div class="col currently-playing">
-      <br />
-      <div class = "dashboard-header-title">Currently Playing</div>
-      <br /><br />
-      <% @games.each do |game| %>
-        <% if current_user.cps.count == 0 %>
-          <%= link_to 'Search for Games', search_games_path %>
-        <% elsif current_user && current_user.cp?(game) %>
-          <div class = "gamebox-art"></div>
-          <br />
-          <div class = "game-title"><%= link_to game.title, game_path(game) %></div>
-          <br />
-          <%= game.platform %>
-          <br />
+<br /><br />
+<%= link_to 'Add a new Game to database', new_game_path, class: 'btn btn-primary' %>
+
+<br /><br />
+<hr />
+<div class="booyah-box"> 
+  <div class="dashboard-header">
+    <div class = "dashboard-header-title">Currently Playing</div>
+    <br />
+    <div class = "row">
+      <div class = "col">
+        <br /><br />
+        <% @games.each do |game| %>
+          <% if current_user.cps.count == 0 %>
+            <%= link_to 'Search for Games', search_games_path %>
+          <% elsif current_user && current_user.cp?(game) %>
+            <div class = "gamebox-art"></div>
+            <br />
+            <div class = "game-title">
+              <%= link_to game.title.truncate(30), game_path(game) %>
+            </div>
+            <br />
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
-    <div style="border-left:1px solid #FFD700"></div>
-    <div class="col-6 text-center">
-      <br />
-      <div class = "dashboard-header-title">Want to Play (wider)</div>
-    </div>
-    <div style="border-left:1px solid #FFD700"></div>
-    <div class="col text-center">
-      <br />
-      <div class = "dashboard-header-title">How many completed a year</div>
+      </div>
+      <div class = "col">
+      </div>
+      <div class = "col">
+      </div>
+      <div class = "col">
+      </div>
+      <div class = "col">
+      </div>
     </div>
   </div>
-  <br />
 </div>
-<br /><br />
-<div class = "booyah-box col-10 offset-1">
-  <%= link_to 'Add a new Game to database', new_game_path %>
+<br />
 
+<hr />
+
+<div class = "booyah-box">
+  <div class = "dashboard-header"> 
+    <div class = "dashboard-header-title">Want to Play (wider)</div>
+    <br/>
+    <div class = "row">
+      <div class="col">
+        <br /><br />
+      </div>
+      <div class="col">
+        <br /><br />
+      </div>
+      <div class="col">
+        <br /><br />
+      </div>
+      <div class="col">
+        <br /><br />
+      </div>
+      <div class="col">
+        <br /><br />
+      </div>
+    </div>
+  </div>
 </div>
+<br />
+
+<hr />
+
+<div class="booyah-box">
+  <div class = "dashboard-header">
+    <div class = "dashboard-header-title">How many completed a year</div>
+    <br />
+    <div class = "row">
+      <div class="col">
+        <br /><br />
+      </div>
+      <div class="col">
+        <br /><br />
+      </div>
+      <div class="col">
+        <br /><br />
+      </div>
+      <div class="col">
+        <br /><br />
+      </div>
+      <div class="col">
+        <br /><br />
+      </div>
+    </div>
+  </div>
+</div>
+<br />
+
+<hr />
+
+<br />
