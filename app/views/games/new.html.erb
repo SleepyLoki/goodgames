@@ -1,27 +1,17 @@
 <br />
 <div class = "booyah-box col-10 offset-1">
   <h1>Add a new game</h1>
-  <%= form_for @game do |f| %>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-    <%= f.label :genre %>
-    <%= f.text_field :genre %>
-    <%= f.label :meta_score %>
-    <%= f.number_field :meta_score, step: :any %>
-    <%= f.label :platform %>
-    <%= f.text_field :platform %>
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-    <%= f.label :developer %>
-    <%= f.text_field :developer %>
-    <%= f.label :publisher %>
-    <%= f.text_field :publisher %>
-    <%= f.label :release_date %>
-    <%= f.text_field :release_date %>
-    <%= f.label :esrb_rating %>
-    <%= f.text_field :esrb_rating %>
-    <%= f.label :youtubeLink %>
-    <%= f.text_field :youtubeLink %>
+  <%= simple_form_for @game do |f| %>
+    <%= f.input :title %>
+    <%= f.input :genre %>
+    <%= f.input :meta_score %>
+    <%= f.input :platform %>
+    <%= f.input :description, as: :text %>
+    <%= f.input :developer %>
+    <%= f.input :publisher %>
+    <%= f.input :release_date %>
+    <%= f.input :esrb_rating %>
+    <%= f.input :youtubeLink %>
     <br />
     <%= f.submit "Create", class: 'btn btn-success' %>
     <br />

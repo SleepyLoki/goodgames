@@ -77,3 +77,11 @@ end
 gem 'devise'
 
 gem 'rack-cors', :require => 'rack/cors'
+
+gem 'carrierwave', '~> 1.0'
+
+gem 'simple_form'
+
+gem 'figaro'
+
+gem 'fog-aws'

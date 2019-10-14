@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :games
+  has_many :photos
   has_many :cps
   has_many :currently_playing, through: :cps, source: :game
 

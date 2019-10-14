@@ -1,3 +1,7 @@
+<% @game.photos.each do |photo| %>
+  <%= image_tag photo.picture.url %>
+<% end %>
+
 <script>
   setVideoId(@game.youtubeLink);
 </script>
@@ -12,6 +16,12 @@
     <%= link_to 'Remove from Currently Playing', game_cp_path(@game), class: 'btn btn-warning', method: :delete %>
   <% else %>
     <%= link_to 'Currently Playing', game_cps_path(@game), class: 'btn btn-primary', method: :post %>
+  <% end %>
+  <br/><br />
+  Add a Photo
+  <%= simple_form_for @photo, url: game_photos_path(@game) do |f| %>
+    <%= f.input :picture %>
+    <%= f.submit "Add a Photo", class: 'btn btn-primary' %>
   <% end %>
   <br/>
   <i><%= @game.description %></i>
