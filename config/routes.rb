@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :games do
     resources :cps, only: [:create, :destroy]
     resources :photos, only: :create
+    resources :comments, only: :create
   end
   get 'search', to: 'games#search', as: :search_games
 end
