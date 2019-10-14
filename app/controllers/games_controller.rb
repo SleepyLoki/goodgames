@@ -16,6 +16,7 @@ class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
     @photo = Photo.new
+    @pictures = Photo.all
   end
 
   private
