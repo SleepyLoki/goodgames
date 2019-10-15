@@ -22,6 +22,18 @@
       <% else %>
         <%= link_to 'Currently Playing', game_cps_path(@game), class: 'btn btn-secondary', method: :post %>
       <% end %>
+
+      <% if current_user && current_user.wtp?(@game) %>
+        <%= link_to 'Remove from Want To Play', game_wtp_path(@game), class: 'btn btn-danger', method: :delete %>
+      <% else %>
+        <%= link_to 'Want To Play', game_wtps_path(@game), class: 'btn btn-secondary', method: :post %>
+      <% end %>
+
+      <% if current_user && current_user.hp?(@game) %>
+        <%= link_to 'Remove from Have Played', game_hp_path(@game), class: 'btn btn-danger', method: :delete %>
+      <% else %>
+        <%= link_to 'Have Played', game_hps_path(@game), class: 'btn btn-secondary', method: :post %>
+      <% end %>
       <br/>
       <% if @photo.picture_limit?(@game) %>
         Photo Limit has been reached

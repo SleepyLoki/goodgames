@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resource :my_games, only: [:show]
   resources :games do
     resources :cps, only: [:create, :destroy]
+    resources :wtps, only: [:create, :destroy]
+    resources :hps, only: [:create, :destroy]
     resources :photos, only: :create
     resources :comments, only: :create
   end

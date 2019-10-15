@@ -1,6 +1,8 @@
 class Game < ApplicationRecord
   belongs_to :user
   has_many :cps
+  has_many :wtps
+  has_many :hps
   has_many :photos
   has_many :comments
 

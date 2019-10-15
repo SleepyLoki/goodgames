@@ -19,7 +19,7 @@
             <div class = "gamebox-art"></div>
             <br />
             <div class = "game-title-dash">
-              <%= link_to game.title.truncate(30), game_path(game) %>
+              <%= link_to game.title.truncate(25), game_path(game) %>
             </div>
             <br />
           <% end %>
@@ -42,11 +42,23 @@
 
 <div class = "booyah-box">
   <div class = "dashboard-header"> 
-    <div class = "dashboard-header-title">Want to Play (wider)</div>
+    <div class = "dashboard-header-title">Want to Play</div>
     <br/>
     <div class = "row">
       <div class="col">
         <br /><br />
+        <% @games.each do |game| %>
+          <% if current_user.wtps.count == 0 %>
+            <%= link_to 'Search for Games', search_games_path %>
+          <% elsif current_user && current_user.wtp?(game) %>
+            <div class = "gamebox-art"></div>
+            <br />
+            <div class = "game-title-dash">
+              <%= link_to game.title.truncate(25), game_path(game) %>
+            </div>
+            <br />
+          <% end %>
+        <% end %>
       </div>
       <div class="col">
         <br /><br />
@@ -74,6 +86,18 @@
     <div class = "row">
       <div class="col">
         <br /><br />
+        <% @games.each do |game| %>
+          <% if current_user.hps.count == 0 %>
+            <%= link_to 'Search for Games', search_games_path %>
+          <% elsif current_user && current_user.hp?(game) %>
+            <div class = "gamebox-art"></div>
+            <br />
+            <div class = "game-title-dash">
+              <%= link_to game.title.truncate(25), game_path(game) %>
+            </div>
+            <br />
+          <% end %>
+        <% end %>
       </div>
       <div class="col">
         <br /><br />
