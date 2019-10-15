@@ -96,7 +96,9 @@
   <br/>
   <i><%= @game.description %></i>
   <br/><br/>
-  <p><%= @game.platform %></p>
+  <% if @game.humanized_platform.present? %>
+    <%= @game.humanized_platform %>
+  <% end %>
 </div>
 
 <br/>

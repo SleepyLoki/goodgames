@@ -8,11 +8,23 @@
 
 <br /><br />
 
-<% @games.each do |game| %>
-  <br />
-  <div class = "text-center booyah-box col-4 offset-4">
-    <%= link_to game.title, game_path(game) %>
+<div class = "row">
+  <% @games.each do |game| %>
     <br />
-    <%= game.platform %>
-  </div>
-<% end %>
+    <div class = "booyah-box col-12 col-sm-2 text-center">
+      <%= link_to game.title.truncate(25), game_path(game) %>
+      <br /><br />
+      <div class = "gamebox-art"></div>
+      <br />
+      <% if game.humanized_platform.present? %>
+        <%= game.humanized_platform %>
+      <% end %>
+      <br />
+      <% if game.humanized_ratings.present? %>
+        <%= game.humanized_ratings %>
+      <% end %>
+      <br /><br />
+    </div>
+  <% end %>
+</div>
+<br /><br />

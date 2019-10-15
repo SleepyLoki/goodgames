@@ -9,7 +9,12 @@
     <div class = "text-center booyah-box col-4 offset-4">
       <%= link_to game.title, game_path(game) %>
       <br />
-      <%= game.platform %>
+      <% if game.humanized_platform.present? %>
+        <%= game.humanized_platform %>
+      <% end %>
+      <% if game.humanized_genres.present? %>
+        <%= game.humanized_genres %>
+      <% end %>
       <br />
       <%= game.developer %>
     </div>

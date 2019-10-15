@@ -5,13 +5,13 @@
   <br/>
   <%= simple_form_for @game do |f| %>
     <%= f.input :title %>
-    <%= f.input :genre %>
+    <%= f.input :genre, as: :select, collection: Game::GENRES %>
     <%= f.input :meta_score %>
-    <%= f.input :platform %>
+    <%= f.input :platform, as: :select, collection: Game::PLATFORMS %>
     <%= f.input :description, as: :text %>
     <%= f.input :developer %>
     <%= f.input :publisher %>
-    <%= f.input :esrb_rating %>
+    <%= f.input :esrb_rating, as: :select, collection: Game::ESRB_RATINGS %>
     <%= f.input :youtubeLink %>
     <br />
     <%= f.submit "Create", class: 'btn btn-success' %>
