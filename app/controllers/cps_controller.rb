@@ -2,14 +2,21 @@ class CpsController < ApplicationController
   before_action :authenticate_user!
 
   def create
+    if current_user.wtp?(current_game)
+      wtp_to_destroy = Wtp.find_by(game_id: current_game, user_id: current_user)
+      wtp_to_destroy.delete
+    elsif current_user.hp?(current_game)
+      hp_to_destroy = Hp.find_by(game_id: current_game, user_id: current_user)
+      hp_to_destroy.delete
+    end
     current_user.cps.create(game: current_game)
     redirect_to game_path(current_game)
   end
 
   def destroy
-    @cp = current_user.cps.include?(@game)
-    @cp.destroy
-    redirect_to root_path
+    cp_to_destroy = Cp.find_by(game_id: current_game, user_id: current_user)
+    cp_to_destroy.delete
+    redirect_to game_path(current_game)
   end
 
   private
@@ -17,4 +24,5 @@ class CpsController < ApplicationController
   def current_game
     @current_game ||= Game.find(params[:game_id])
   end
+
 end

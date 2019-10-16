@@ -7,6 +7,7 @@ var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 function setVideoId(vidId) {
+  console.log("Help");
   finalVideoId = vidId;
   console.log(finalVideoId);
 }
@@ -15,10 +16,11 @@ function setVideoId(vidId) {
 //    after the API code downloads.
 var player;
 function onYouTubeIframeAPIReady() {
+  console.log("help");
   player = new YT.Player('player', {
     height: '390',
     width: '640',
-    videoId: finalVideoId,
+    videoId: 'H3q2F1_3Vjk',
     playerVars: {'rel': 0}
   });
 }

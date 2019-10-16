@@ -10,28 +10,24 @@
     <div class = "dashboard-header-title">Currently Playing</div>
     <br />
     <div class = "row">
-      <div class = "col">
+      <div class = "col dashboard-game">
         <br /><br />
-        <% @games.each do |game| %>
-          <% if current_user.cps.count == 0 %>
-            <%= link_to 'Search for Games', search_games_path %>
-          <% elsif current_user && current_user.cp?(game) %>
-            <div class = "gamebox-art"></div>
-            <br />
-            <div class = "game-title-dash">
-              <%= link_to game.title.truncate(25), game_path(game) %>
-            </div>
-            <br />
+        <% @games.each_with_index do |game, index| %>
+          <% if index < 6 %>
+            <% if current_user.cps.count == 0 %>
+              <%= link_to 'Search for Games', search_games_path %>
+            <% elsif current_user && current_user.cp?(game) %>
+              <div>
+                <div class = "gamebox-art"></div>
+                <br />
+                <div class = "game-title-dash">
+                  <%= link_to game.title.truncate(25), game_path(game) %>
+                </div>
+              </div>
+              <br />
+            <% end %>
           <% end %>
         <% end %>
-      </div>
-      <div class = "col">
-      </div>
-      <div class = "col">
-      </div>
-      <div class = "col">
-      </div>
-      <div class = "col">
       </div>
     </div>
   </div>
@@ -45,32 +41,24 @@
     <div class = "dashboard-header-title">Want to Play</div>
     <br/>
     <div class = "row">
-      <div class="col">
+      <div class="col dashboard-game">
         <br /><br />
-        <% @games.each do |game| %>
-          <% if current_user.wtps.count == 0 %>
-            <%= link_to 'Search for Games', search_games_path %>
-          <% elsif current_user && current_user.wtp?(game) %>
-            <div class = "gamebox-art"></div>
-            <br />
-            <div class = "game-title-dash">
-              <%= link_to game.title.truncate(25), game_path(game) %>
-            </div>
-            <br />
+        <% @games.each_with_index do |game, index| %>
+          <% if index < 6 %>
+            <% if current_user.wtps.count == 0 %>
+              <%= link_to 'Search for Games', search_games_path %>
+            <% elsif current_user && current_user.wtp?(game) %>
+              <div>
+                <div class = "gamebox-art"></div>
+                <br />
+                <div class = "game-title-dash">
+                  <%= link_to game.title.truncate(25), game_path(game) %>
+                </div>
+              </div>
+              <br />
+            <% end %>
           <% end %>
         <% end %>
-      </div>
-      <div class="col">
-        <br /><br />
-      </div>
-      <div class="col">
-        <br /><br />
-      </div>
-      <div class="col">
-        <br /><br />
-      </div>
-      <div class="col">
-        <br /><br />
       </div>
     </div>
   </div>
@@ -84,32 +72,24 @@
     <div class = "dashboard-header-title">How many completed a year</div>
     <br />
     <div class = "row">
-      <div class="col">
+      <div class="col dashboard-game">
         <br /><br />
-        <% @games.each do |game| %>
-          <% if current_user.hps.count == 0 %>
-            <%= link_to 'Search for Games', search_games_path %>
-          <% elsif current_user && current_user.hp?(game) %>
-            <div class = "gamebox-art"></div>
-            <br />
-            <div class = "game-title-dash">
-              <%= link_to game.title.truncate(25), game_path(game) %>
-            </div>
-            <br />
+        <% @games.each_with_index do |game, index| %>
+          <% if index < 6 %>
+            <% if current_user.hps.count == 0 %>
+              <%= link_to 'Search for Games', search_games_path %>
+            <% elsif current_user && current_user.hp?(game) %>
+              <div>
+                <div class = "gamebox-art"></div>
+                <br />
+                <div class = "game-title-dash">
+                  <%= link_to game.title.truncate(25), game_path(game) %>
+                </div>
+              </div>
+              <br />
+            <% end %>
           <% end %>
         <% end %>
-      </div>
-      <div class="col">
-        <br /><br />
-      </div>
-      <div class="col">
-        <br /><br />
-      </div>
-      <div class="col">
-        <br /><br />
-      </div>
-      <div class="col">
-        <br /><br />
       </div>
     </div>
   </div>

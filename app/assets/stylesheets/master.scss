@@ -277,3 +277,13 @@ blockquote p {
     -webkit-tap-highlight-color: transparent;
 }
 
+.dashboard-game{
+  display: flex;
+  justify-content: space-between;
+}
+
+.player-wrapper{
+  display:flex;
+  justify-content: center;
+}
+
