@@ -6,6 +6,8 @@ class Game < ApplicationRecord
   has_many :photos
   has_many :comments
 
+  validates :title, :genre, :meta_score, :platform, :description, :developer, :publisher, :esrb_rating, :youtubeLink, presence: true
+
   def self.search(term)
     if term
       where('title iLIKE ?', "%#{term}%")

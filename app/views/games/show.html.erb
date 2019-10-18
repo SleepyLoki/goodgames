@@ -10,6 +10,7 @@
     <div class = "text-center game-title">
       <%= @game.title %>
     </div>
+
     <div class = "text-center">
       <br/>
       <% if current_user && current_user.cp?(@game) %>
@@ -31,7 +32,7 @@
       <% end %>
       <br/>
       <% if @photo.picture_limit?(@game) %>
-        Photo Limit has been reached
+        See Images Below
       <% else %>
         <!-- Photo Button trigger modal -->
         <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2">
@@ -44,46 +45,37 @@
 </div>
 <br /><hr><br />
 
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="7"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="8"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="9"></li>
-  </ol>
-  <div class="carousel-inner" role="listbox">
-    <% @game.photos.each_with_index do |photo, index| %>
-      <% if index == 0 %>
-        <div class = "carousel-item active">
-          <%= image_tag photo.picture.url %>
-        </div>
-      <% else %>
-        <div class = "carousel-item">
-          <%= image_tag photo.picture.url %>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
+<div class = "container">
+  <% if @game.photos.count > 0 %>
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <% @game.photos.each_with_index do |photo, index| %>
+          <% if index == 0 %>
+            <div class = "carousel-item active">
+              <%= image_tag photo.picture.url %>
+            </div>
+          <% else %>
+            <div class = "carousel-item">
+              <%= image_tag photo.picture.url %>
+            </div>
+          <% end %>
+        <% end %>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+  <% end %>
 </div>
-<br /><hr ><br />
+<br/><hr ><br>
 <div class = "booyah-box col-10 offset-1 game-info">
-  <br/>
   <i><%= @game.description %></i>
-  <br/><br/>
+  <br/>
   <% if @game.humanized_platform.present? %>
     <%= @game.humanized_platform %>
   <% end %>
