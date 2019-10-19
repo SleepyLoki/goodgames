@@ -12,20 +12,16 @@
     <div class = "row">
       <div class = "col dashboard-game">
         <br /><br />
-        <% if current_user.cps.count == 0 %>
-          <%= link_to 'Search for Games', search_games_path %>
-        <% else %>
-          <% @games.each_with_index do |game, index| %>
-            <% if index < 6 %>
-              <% if current_user && current_user.cp?(game) %>
-                <div>
-                  <br />
-                  <div class = "game-title-dash">
-                    <%= link_to game.title.truncate(25), game_path(game) %>
-                  </div>
-                </div>
+        <% @games.each_with_index do |game, index| %>
+          <% if index < 3 %>
+            <% if current_user && current_user.cp?(game) %>
+              <div>
                 <br />
-              <% end %>
+                <div class = "game-title-dash">
+                  <%= link_to game.title.truncate(25), game_path(game) %>
+                </div>
+              </div>
+              <br />
             <% end %>
           <% end %>
         <% end %>
@@ -44,20 +40,17 @@
     <div class = "row">
       <div class="col dashboard-game">
         <br /><br />
-        <% if current_user.wtps.count == 0 %>
-          <%= link_to 'Search for Games', search_games_path %>
-        <% else %>
-          <% @games.each_with_index do |game, index| %>
-            <% if index < 6 %>
-              <% if current_user && current_user.wtp?(game) %>
-                <div> 
-                  <br />
-                  <div class = "game-title-dash">
-                    <%= link_to game.title.truncate(25), game_path(game) %>
-                  </div>
-                </div>
+        <% @games.each_with_index do |game, index| %>
+          <% if index < 3 %>
+            <% if current_user && current_user.wtp?(game) %>
+            <div class = "gamebox-art"></div>
+              <div> 
                 <br />
-              <% end %>
+                <div class = "game-title-dash text-center">
+                  <%= link_to game.title.truncate(25), game_path(game) %>
+                </div>
+              </div>
+              <br />
             <% end %>
           <% end %>
         <% end %>
@@ -76,20 +69,16 @@
     <div class = "row">
       <div class="col dashboard-game">
         <br /><br />
-        <% if current_user.hps.count == 0 %>
-          <%= link_to 'Search for Games', search_games_path %>
-        <% else %>
-          <% @games.each_with_index do |game, index| %>
-            <% if index < 6 %>
-              <% if current_user && current_user.hp?(game) %>
-                <div>
-                  <br />
-                  <div class = "game-title-dash">
-                    <%= link_to game.title.truncate(25), game_path(game) %>
-                  </div>
-                </div>
+        <% @games.each_with_index do |game, index| %>
+          <% if index < 3 %>
+            <% if current_user && current_user.hp?(game) %>
+              <div>
                 <br />
-              <% end %>
+                <div class = "game-title-dash">
+                  <%= link_to game.title.truncate(25), game_path(game) %>
+                </div>
+              </div>
+              <br />
             <% end %>
           <% end %>
         <% end %>
