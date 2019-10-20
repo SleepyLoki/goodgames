@@ -11,5 +11,6 @@ Rails.application.routes.draw do
     resources :photos, only: :create
     resources :comments, only: :create
   end
+  resources :users, only: :show
   get 'search', to: 'games#search', as: :search_games
 end

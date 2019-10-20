@@ -2,11 +2,11 @@
   <br />
   <div class = "frosty col-10 offset-1">
     <% if user_signed_in? %>
-      <h1>Welcome Back</h1><h2><%=current_user.first_name%></h2>
+      <h1>Welcome Back!</h1>
       <br /><br />
       <hr/>
       <br /><br />
-      <h3>Visit your <%= link_to 'dashboard', dashboard_path, class: "link-text" %> now!</h3>
+      <h3>Visit your <%= link_to 'dashboard', user_path(current_user), class: "link-text" %> now!</h3>
     <% else %>
       <h2>Video games ruined my life,</h1>
       <br />

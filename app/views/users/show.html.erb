@@ -9,10 +9,10 @@
     </div>
     <div class = "col-8">
       <br />
-      <h1>Welcome, <%= current_user.first_name %> to your account!</h1>
-      <h3>Member Since: <%= current_user.created_at.strftime("%B %d, %Y") %></h3>
-      <h4><%= current_user.comments.count %> total comments</h4>
-      <h4><%= current_user.comments.where(rating: '5_stars').count %> total 5 star reviews</h4>
+      <h1>Welcome, <%= @user.first_name %> to your account!</h1>
+      <h3>Member Since: <%= @user.created_at.strftime("%B %d, %Y") %></h3>
+      <h4><%= @user.comments.count %> total comments</h4>
+      <h4><%= @user.comments.where(rating: '5_stars').count %> total 5 star reviews</h4>
     </div>
   </div>
   <br />
@@ -26,7 +26,7 @@
 <h1 class = "text-center">My Comments</h1>
 <br /><br />
 <div class = "row">
-  <% current_user.comments.each do |comment| %>
+  <% @user.comments.each do |comment| %>
     <div class="col-12 col-sm-6">
       <h2 class = "text-center"><%= link_to comment.game.title, game_path(comment.game) %></h2>
       <blockquote>
