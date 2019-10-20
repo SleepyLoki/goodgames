@@ -1,3 +1,4 @@
+<%= get_video_iframe('http://the.video.url') %>
 <br />
 <div class = "player-wrapper">
   <div id = "player"></div>
@@ -154,6 +155,8 @@
   <% end %>
 </div>
 
+
+
 <script>
   // 2. This code loads the IFrame Player API code asynchronously.
 var tag = document.createElement('script');
@@ -171,7 +174,7 @@ function onYouTubeIframeAPIReady() {
   player = new YT.Player('player', {
     height: '390',
     width: '640',
-    videoId: '<%=@game.youtubeLink%>',
+    videoId: '<%=find_youtube_id @game.youtubeLink%>',
     playerVars: {'rel': 0}
   });
 }

@@ -1,93 +1,33 @@
-<br /><br />
-<div class = "text-center">
-  <%= link_to 'Add a new Game to database', new_game_path, class: 'btn btn-secondary waves-effect waves-light' %>
-</div>
-
-<br /><br />
-<hr />
-<div class="booyah-box"> 
-  <div class="dashboard-header">
-    <div class = "dashboard-header-title">Currently Playing</div>
-    <br />
-    <div class = "row">
-      <div class = "col dashboard-game">
-        <br /><br />
-        <% @games.each_with_index do |game, index| %>
-          <% if index < 3 %>
-            <% if current_user && current_user.cp?(game) %>
-              <div>
-                <br />
-                <div class = "game-title-dash">
-                  <%= link_to game.title.truncate(25), game_path(game) %>
-                </div>
-              </div>
-              <br />
-            <% end %>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
 <br />
-
-<hr />
-
 <div class = "booyah-box">
-  <div class = "dashboard-header"> 
-    <div class = "dashboard-header-title">Want to Play</div>
-    <br/>
-    <div class = "row">
-      <div class="col dashboard-game">
-        <br /><br />
-        <% @games.each_with_index do |game, index| %>
-          <% if index < 3 %>
-            <% if current_user && current_user.wtp?(game) %>
-            <div class = "gamebox-art"></div>
-              <div> 
-                <br />
-                <div class = "game-title-dash text-center">
-                  <%= link_to game.title.truncate(25), game_path(game) %>
-                </div>
-              </div>
-              <br />
-            <% end %>
-          <% end %>
-        <% end %>
-      </div>
+  <br />
+  <div class = "row">
+    <div class = "col-4 text-center">
+      <%= image_tag 'user.png' %>
+    </div>
+    <div class = "col-8">
+      <h1>Welcome, <%= @user.first_name %> to your account!</h1>
+      <h3>Member Since: <%= @user.created_at.strftime("%B %d, %Y") %></h3>
+      <h4><%= @user.comments.count %> total comments</h4>
+      <h4><%= @user.comments.where(rating: '5_stars').count %> total 5 star reviews</h4>
     </div>
   </div>
+  <br />
 </div>
-<br />
+<br /><br />
 
-<hr />
-
-<div class="booyah-box">
-  <div class = "dashboard-header">
-    <div class = "dashboard-header-title">How many completed a year</div>
-    <br />
-    <div class = "row">
-      <div class="col dashboard-game">
-        <br /><br />
-        <% @games.each_with_index do |game, index| %>
-          <% if index < 3 %>
-            <% if current_user && current_user.hp?(game) %>
-              <div>
-                <br />
-                <div class = "game-title-dash">
-                  <%= link_to game.title.truncate(25), game_path(game) %>
-                </div>
-              </div>
-              <br />
-            <% end %>
-          <% end %>
+<h1 class = "text-center">My Comments</h1>
+<br /><br />
+<div class = "row">
+  <% @user.comments.each do |comment| %>
+    <div class="col-12 col-sm-6">
+      <h2 class = "text-center"><%= link_to comment.game.title, game_path(comment.game) %></h2>
+      <blockquote>
+        <% if comment.humanized_rating.present? %>
+          <b><%= comment.humanized_rating %></b> -
         <% end %>
-      </div>
+        <%= comment.message %>
+      </blockquote>
     </div>
-  </div>
+  <% end %>
 </div>
-<br />
-
-<hr />
-
-<br />
