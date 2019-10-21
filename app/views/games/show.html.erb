@@ -10,8 +10,19 @@
   <div>
     <div class = "text-center game-title">
       <%= @game.title %>
+      <br />
+      <% if @photo.feature_limit?(@game) %>
+        <% @game.photos.each do |photo| %>
+          <%= image_tag photo.feature_Photo.url, class: 'feature-image' %>
+        <% end %>
+      <% else %>
+        <%= simple_form_for @photo, url: game_photos_path(@game) do |f| %>
+          <%= f.input :feature_Photo %>
+          <%= f.submit "Add Picture", class: 'btn btn-success' %>
+        <% end %>
+      <% end %>
     </div>
-
+    
     <div class = "text-center">
       <br/>
       <% if current_user && current_user.cp?(@game) %>
@@ -46,33 +57,6 @@
 </div>
 <br /><hr><br />
 
-<div class = "container">
-  <% if @game.photos.count > 0 %>
-    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-      <div class="carousel-inner">
-        <% @game.photos.each_with_index do |photo, index| %>
-          <% if index == 0 %>
-            <div class = "carousel-item active">
-              <%= image_tag photo.picture.url %>
-            </div>
-          <% else %>
-            <div class = "carousel-item">
-              <%= image_tag photo.picture.url %>
-            </div>
-          <% end %>
-        <% end %>
-        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-      </div>
-    </div>
-  <% end %>
-</div>
 <br/><hr ><br>
 <div class = "booyah-box col-10 offset-1 game-info">
   <i><%= @game.description %></i>
@@ -155,17 +139,13 @@
   <% end %>
 </div>
 
-
-
 <script>
   // 2. This code loads the IFrame Player API code asynchronously.
 var tag = document.createElement('script');
 var finalVideoId;
-
 tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
 // 3. This function creates an <iframe> (and YouTube player)
 //    after the API code downloads.
 var player;
@@ -174,24 +154,20 @@ function onYouTubeIframeAPIReady() {
   player = new YT.Player('player', {
     height: '390',
     width: '640',
-    videoId: '<%=find_youtube_id @game.youtubeLink%>',
+    videoId: '<%=@game.youtubeLink%>',
     playerVars: {'rel': 0}
   });
 }
-
 // 4. The API will call this function when the video player is ready.
 function onPlayerReady(event) {
   event.target.playVideo();
 }
-
 function pauseVideo(){
   player.pauseVideo();
 }
-
 function playVideo(){
   player.playVideo();
 }
-
 function stopVideo() {
   player.stopVideo();
 }

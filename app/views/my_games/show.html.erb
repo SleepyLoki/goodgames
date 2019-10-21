@@ -17,7 +17,11 @@
       <div class = "booyah-box col-4 col-sm-2 text-center">
         <%= link_to game_path(game), :title => "#{game.title}" do %>
           <br />
-          <div class = "gamebox-art"></div>
+          <div>
+            <% game.photos.each do |photo| %>
+              <%= image_tag photo.feature_Photo.url, class: 'search-image' %>
+            <% end %>
+          </div>
           <% if game.humanized_platform.present? %>
             <%= game.humanized_platform %>
           <% end %>
