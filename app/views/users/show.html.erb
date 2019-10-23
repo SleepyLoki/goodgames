@@ -10,7 +10,11 @@
     <div class = "col-8">
       <br />
       <h1>Welcome, <%= @user.first_name %>, to your account!</h1>
-      <h3>Member Since: <%= @user.created_at.strftime("%B %d, %Y") %></h3>
+      <br/>
+      <p>
+        <%= @user.bio %>
+      </p>
+      <h5>Member Since: <%= @user.created_at.strftime("%B %d, %Y") %></h5>
       <h4><%= @user.comments.count %> total comments</h4>
       <h4><%= @user.comments.where(rating: '5_stars').count %> total 5 star reviews</h4>
     </div>

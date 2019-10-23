@@ -19,7 +19,11 @@
           <br />
           <div>
             <% game.photos.each do |photo| %>
-              <%= image_tag photo.feature_Photo.url, class: 'search-image' %>
+              <% if photo.feature_Photo.nil? %>
+                <%= image_tag photo.feature_Photo.url, class: 'feature-image' %>
+              <% else %>
+                <%= image_tag photo.feature_Photo.url, class: 'search-image' %>
+              <% end %>
             <% end %>
           </div>
           <% if game.humanized_platform.present? %>
