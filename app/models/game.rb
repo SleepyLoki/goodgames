@@ -16,6 +16,8 @@ class Game < ApplicationRecord
     end
   end
 
+  # Method gathered from Steven Zeiler
+  # Gist: https://gist.github.com/stevenzeiler/5911947
   def youtube_embed(youtube_url)
     if youtube_url[/youtu\.be\/([^\?]*)/]
       youtube_id = $1
