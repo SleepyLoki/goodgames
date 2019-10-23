@@ -4,6 +4,7 @@ class Photo < ApplicationRecord
   mount_uploader :picture, PictureUploader
   mount_uploader :feature_Photo, PictureUploader
 
+  validates :picture, presence: true
   validates :feature_Photo, presence: true
 
   def feature_limit?(game)

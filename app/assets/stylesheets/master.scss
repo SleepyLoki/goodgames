@@ -319,8 +319,9 @@ blockquote p {
   max-height: 500px;
   max-width: 400px;
 }
-
-.default-game-cover {
-  background: image_url('default_feature.jpg');
+.feature-image-default img {
+  max-height: 500px;
+  max-width: 400px;
 }
+
 

@@ -21,11 +21,10 @@
       <br /><br />
       <div>
         <div>
-          <% game.photos.each do |photo| %>
-            <% if photo.feature_Photo.nil? %>
-              <%= image_tag photo.feature_Photo.url, class: 'feature-image' %>
-              
-            <% else %>
+          <% if game.photos.count == 0 %>
+              <%= image_tag('default_feature.jpg', class: 'search-image') %>
+          <% else %>
+            <% game.photos.each do |photo| %>
               <%= image_tag photo.feature_Photo.url, class: 'search-image' %>
             <% end %>
           <% end %>

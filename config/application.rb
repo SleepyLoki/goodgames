@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module Goodgames
   class Application < Rails::Application
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
@@ -19,6 +20,7 @@ module Goodgames
 end
 
 class Application < Rails::Application
+
   # Access-Control-Allow-Origin
   config.middleware.use Rack::Cors do
     allow do
@@ -31,6 +33,7 @@ class Application < Rails::Application
 end
 
 class ApplicationController < ActionController::Base
+  
     protect_from_forgery with: :exception
 
     before_action :configure_permitted_parameters, if: :devise_controller?
