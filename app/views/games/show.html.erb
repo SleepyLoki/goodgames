@@ -10,11 +10,12 @@
   <br />
   <div>
     <div class = "text-center game-title">
-      <%= @game.title %>
-      <br />
-      <div class = 'feature-image-default'>
-        <%= image_tag('default_feature.jpg', class: 'feature-image') %>
-      </div>
+      <%= @game.title%> 
+      <% if @game.humanized_platform.present? %>
+        <%= " (" %>
+        <%= @game.humanized_platform %>
+        <%= ")" %>
+      <% end %>
     </div>
     
     <div class = "text-center">
@@ -43,12 +44,52 @@
 </div>
 
 <br/><hr ><br>
-<div class = "booyah-box col-10 offset-1 game-info">
+<div class = "text-center">
+  <% if @photo.picture_limit?(@game) %>
+    <h4>See Gameplay Pics Below</h4>
+  <% else %>
+    <!-- Photo Button trigger modal -->
+    <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2">
+      Add a Gameplay Picture
+    </button>
+  <% end %>
+</div>
+<br />
+<div class = "container">
+  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <% @game.photos.each_with_index do |photo, index| %>
+        <% if index == 0 %>
+          <div class = "carousel-item active">
+            <%= image_tag photo.picture.url %>
+          </div>
+        <% else %>
+          <div class = "carousel-item">
+            <%= image_tag photo.picture.url %>
+          </div>
+        <% end %>
+      <% end %>
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<br/><hr ><br>
+<div class = "booyah-box col-10 offset-1 game-info text-center">
+  <br />
   <i><%= @game.description %></i>
   <br/>
   <% if @game.humanized_platform.present? %>
     <%= @game.humanized_platform %>
   <% end %>
+  <br /><br />
 </div>
 
 <br/>
@@ -145,7 +186,7 @@
     </div>
   <% end %>
 </div>
-
+<br /><br />
 <script>
   // 2. This code loads the IFrame Player API code asynchronously.
   var tag = document.createElement('script');
