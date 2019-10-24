@@ -20,15 +20,7 @@
       <%= game.title.truncate(25) %>
       <br /><br />
       <div>
-        <div>
-          <% if game.photos.count == 0 %>
-              <%= image_tag('default_feature.jpg', class: 'search-image') %>
-          <% else %>
-            <% game.photos.each do |photo| %>
-              <%= image_tag photo.feature_Photo.url, class: 'search-image' %>
-            <% end %>
-          <% end %>
-        </div>
+        <%= image_tag('default_feature.jpg', class: 'search-image') %>
       </div>
       <br />
       <% if game.humanized_platform.present? %>
