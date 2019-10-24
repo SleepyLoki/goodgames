@@ -18,14 +18,9 @@
         <%= link_to game_path(game), :title => "#{game.title}" do %>
           <br />
           <div>
-            <% game.photos.each do |photo| %>
-              <% if photo.feature_Photo.nil? %>
-                <%= image_tag photo.feature_Photo.url, class: 'feature-image' %>
-              <% else %>
-                <%= image_tag photo.feature_Photo.url, class: 'search-image' %>
-              <% end %>
-            <% end %>
+            <%= image_tag('default_feature.jpg', class: 'search-image') %>
           </div>
+          <br />
           <% if game.humanized_platform.present? %>
             <%= game.humanized_platform %>
           <% end %>
