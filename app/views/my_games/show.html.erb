@@ -18,9 +18,10 @@
         <%= link_to game_path(game), :title => "#{game.title}" do %>
           <br />
           <div>
-            <%= image_tag('default_feature.jpg', class: 'search-image') %>
+            <%= image_tag('default_own.jpg', class: 'search-image own-game') %>
           </div>
           <br />
+          <%= game.title.truncate(25) %><br />
           <% if game.humanized_platform.present? %>
             <%= game.humanized_platform %>
           <% end %>
@@ -47,7 +48,10 @@
       <div class = "booyah-box col-4 col-sm-2 text-center">
         <%= link_to game_path(game), :title => "#{game.title}" do %>
           <br />
-          <div class = "gamebox-art"></div>
+          <div>
+            <%= image_tag('default_own.jpg', class: 'search-image own-game') %>
+          </div>
+          <%= game.title.truncate(25) %><br />
           <% if game.humanized_platform.present? %>
             <%= game.humanized_platform %>
           <% end %>
@@ -74,7 +78,10 @@
       <div class = "booyah-box col-4 col-sm-2 text-center">
         <%= link_to game_path(game), :title => "#{game.title}" do %>
           <br />
-          <div class = "gamebox-art"></div>
+          <div>
+            <%= image_tag('default_own.jpg', class: 'search-image own-game') %>
+          </div>
+          <%= game.title.truncate(25) %><br />
           <% if game.humanized_platform.present? %>
             <%= game.humanized_platform %>
           <% end %>
