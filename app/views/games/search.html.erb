@@ -26,8 +26,8 @@
     <br />
     <div class = "booyah-box col-12 col-sm-2 text-center">
       <br/>
-      <%= link_to game_path(game), :title => "#{game.title}" do %>
-      <%= game.title.truncate(22) %>  
+      <%= link_to game_path(game), :method => :get, :title => "#{game.title}" do %>
+      <%= game.title.truncate(20) %>  
       
       <% if current_user.cp?(game) %>
         <h4 class = "badge badge-success">CP</h4>

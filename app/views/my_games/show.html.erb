@@ -15,7 +15,7 @@
     <% if current_user && current_user.cp?(game) %>
       <br />
       <div class = "booyah-box col-4 col-sm-2 text-center">
-        <%= link_to game_path(game), :title => "#{game.title}" do %>
+        <%= link_to game_path(game), :method => :get, :title => "#{game.title}" do %>
           <br />
           <div>
             <%= image_tag('default_own.jpg', class: 'search-image own-game') %>
@@ -44,7 +44,7 @@
     <% if current_user && current_user.wtp?(game) %>
       <br />
       <div class = "booyah-box col-4 col-sm-2 text-center">
-        <%= link_to game_path(game), :title => "#{game.title}" do %>
+        <%= link_to game_path(game), :method => :get, :title => "#{game.title}" do %>
           <br />
           <div>
             <%= image_tag('default_own.jpg', class: 'search-image own-game') %>
@@ -73,7 +73,7 @@
     <% if current_user && current_user.hp?(game) %>
       <br />
       <div class = "booyah-box col-4 col-sm-2 text-center">
-        <%= link_to game_path(game), :title => "#{game.title}" do %>
+        <%= link_to game_path(game), :method => :get, :title => "#{game.title}" do %>
           <br />
           <div>
             <%= image_tag('default_own.jpg', class: 'search-image own-game') %>
