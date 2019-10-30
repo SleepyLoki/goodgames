@@ -10,11 +10,24 @@
   <br />
   <div>
     <div class = "text-center game-title">
-      <%= @game.title%> 
+      <%= @game.title %> 
       <% if @game.humanized_platform.present? %>
         <%= " (" %>
         <%= @game.humanized_platform %>
         <%= ")" %>
+      <% end %>
+    </div>
+    <div class = "text-center">
+      <h3 class = "badge badge-default">
+        <%= @game.meta_score %> %
+      </h3>
+      ■
+      <% if @game.humanized_genres.present? %>
+        <%= @game.humanized_genres %>
+      <% end %>
+      ■
+      <% if @game.humanized_ratings.present? %>
+        <%= @game.humanized_ratings %>
       <% end %>
     </div>
     
@@ -90,6 +103,18 @@
     <%= @game.humanized_platform %>
   <% end %>
   <br /><br />
+</div>
+<br />
+<div class = "text-center">
+  <h6>
+    <div title = "Developer">
+      <%= @game.developer %>
+    </div>
+    ♦
+    <div title = "Publisher">
+      <%= @game.publisher %>
+    </div>
+  </h6>
 </div>
 
 <br/>

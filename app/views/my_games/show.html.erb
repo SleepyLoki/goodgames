@@ -10,7 +10,7 @@
   <h3>Currently Playing</h3>
   <br />
 </div>
-<div class = "row">
+<div class = "row my-games-body">
   <% @games.each do |game| %>
     <% if current_user && current_user.cp?(game) %>
       <br />
@@ -25,11 +25,9 @@
           <% if game.humanized_platform.present? %>
             <%= game.humanized_platform %>
           <% end %>
-          <% if game.humanized_genres.present? %>
-            <%= game.humanized_genres %>
-          <% end %>
           <br />
           <%= game.developer %>
+          <br /><br />
         <% end %>
       </div>
     <% end %>
@@ -41,7 +39,7 @@
   <h3>Want to Play</h3>
   <br />
 </div>
-<div class = "row">
+<div class = "row my-games-body">
   <% @games.each do |game| %>
     <% if current_user && current_user.wtp?(game) %>
       <br />
@@ -51,15 +49,14 @@
           <div>
             <%= image_tag('default_own.jpg', class: 'search-image own-game') %>
           </div>
+          <br />
           <%= game.title.truncate(25) %><br />
           <% if game.humanized_platform.present? %>
             <%= game.humanized_platform %>
           <% end %>
-          <% if game.humanized_genres.present? %>
-            <%= game.humanized_genres %>
-          <% end %>
           <br />
           <%= game.developer %>
+          <br /><br />
         <% end %>
       </div>
     <% end %>
@@ -71,7 +68,7 @@
   <h3>Have Played</h3>
   <br />
 </div>
-<div class = "row">
+<div class = "row my-games-body">
   <% @games.each do |game| %>
     <% if current_user && current_user.hp?(game) %>
       <br />
@@ -81,15 +78,14 @@
           <div>
             <%= image_tag('default_own.jpg', class: 'search-image own-game') %>
           </div>
+          <br />
           <%= game.title.truncate(25) %><br />
           <% if game.humanized_platform.present? %>
             <%= game.humanized_platform %>
           <% end %>
-          <% if game.humanized_genres.present? %>
-            <%= game.humanized_genres %>
-          <% end %>
           <br />
           <%= game.developer %>
+          <br /><br />
         <% end %>
       </div>
     <% end %>
