@@ -3,42 +3,92 @@
   <br />
   <div class = "row">
     <div class = "col-4 text-center">
-      <%= image_tag 'user.png' %>
-      <br /><br />
-      <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "btn btn-warning" %>
+      <% if current_user == @user %>
+        <%= image_tag 'user.png' %>
+        <br /><br />
+        <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: "btn btn-warning" %>
+      <% else %>
+        <%= image_tag 'user3.png' %>
+        <br /><br />
+      <% end %>
     </div>
     <div class = "col-8">
-      <br />
+    <br />
+    <% if current_user == @user %>
       <h1>Welcome, <%= @user.first_name %>, to your account!</h1>
       <br/>
-      <p>
-        <%= @user.bio %>
-      </p>
+      <div class = "col-10">
+        <p>
+          <%= @user.bio %>
+        </p>
+      </div>
       <h5>Member Since: <%= @user.created_at.strftime("%B %d, %Y") %></h5>
       <h4><%= @user.comments.count %> total comments</h4>
       <h4><%= @user.comments.where(rating: '5_stars').count %> total 5 star reviews</h4>
+    <% else %>
+      <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+      <br/>
+      <div class = "col-10">
+        <p>
+          <%= @user.bio %>
+        </p>
+      </div>
+      <h5>Member Since: <%= @user.created_at.strftime("%B %d, %Y") %></h5>
+      <h4><%= @user.comments.where(rating: '5_stars').count %> total 5 star reviews <% @user.first_name %> has given!</h4>
+    <% end  %>
     </div>
   </div>
   <br />
 </div>
 <br /><br />
-<div class = "text-center">
-  <%= link_to 'Add a new Game to database', new_game_path, class: 'btn btn-secondary waves-effect waves-light' %>
-</div>
-<br /><hr /><br />
+<% if current_user == @user %>
+  <div class = "text-center">
+    <%= link_to 'Add a new Game to database', new_game_path, class: 'btn btn-secondary waves-effect waves-light' %>
+  </div>
+  <br /><hr /><br />
+<% end %>
 
-<h1 class = "text-center">My Comments</h1>
-<br /><br />
-<div class = "row">
-  <% @user.comments.each do |comment| %>
-    <div class="col-12 col-sm-6">
-      <h2 class = "text-center"><%= link_to comment.game.title, game_path(comment.game), :method => :get, class: "text-link" %></h2>
-      <blockquote>
-        <% if comment.humanized_rating.present? %>
-          <b><%= comment.humanized_rating %></b> -
-        <% end %>
-        <%= comment.message %>
-      </blockquote>
-    </div>
-  <% end %>
-</div>
+<% if current_user == @user %>
+  <h1 class = "text-center">My Comments</h1>
+  <br /><br />
+  <div class = "row">
+    <% @user.comments.each do |comment| %>
+      <div class="col-12 col-sm-6">
+        <h2 class = "text-center"><%= link_to comment.game.title, game_path(comment.game), :method => :get, class: "text-link" %></h2>
+        <blockquote>
+          <% if comment.humanized_rating.present? %>
+            <b><%= comment.humanized_rating %></b> -
+          <% end %>
+          <%= comment.message %>
+        </blockquote>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <h1 class = "text-center">Games <%=@user.first_name%> is currently playing!</h1>
+  <br /><br />
+  <div class = "row my-games-body">
+    <% @games.each do |game| %>
+      <% if @user && @user.cp?(game) %>
+        <br />
+        <div class = "booyah-box col-4 col-sm-2 text-center">
+          <%= link_to game_path(game), :method => :get, :title => "#{game.title}" do %>
+            <br />
+            <div>
+              <%= image_tag('default_own.jpg', class: 'search-image own-game') %>
+            </div>
+            <br />
+            <div class = "text-link">
+              <%= game.title.truncate(25) %><br />
+              <% if game.humanized_platform.present? %>
+                <%= game.humanized_platform %>
+              <% end %>
+              <br /><br />
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <br /><br />
+<% end %>
