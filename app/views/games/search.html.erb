@@ -9,16 +9,6 @@
   <% end %>
 </div>
 
-<br />
-<div class = "booyah-box col-2 offset-5 text-center">
-  <br />
-  <h3>Legend</h3><br />
-  <h4 class = "badge badge-success">Currently Playing</h4><br />
-  <h4 class = "badge badge-info">Want to Play</h4><br/>
-  <h4 class = "badge badge-warning">Have Played</h4><br/>
-  <br />
-</div>
-
 <br /><hr /><br />
 
 <div class = "row my-games-body">
@@ -29,15 +19,7 @@
       <%= link_to game_path(game), :method => :get, :title => "#{game.title}" do %>
       <%= game.title.truncate(20) %>  
       
-      <% if current_user.cp?(game) %>
-        <h4 class = "badge badge-success">CP</h4>
-      <% end %>
-      <% if current_user.wtp?(game) %>
-        <h4 class = "badge badge-info">WTP</h4>
-      <% end %>
-      <% if current_user.hp?(game) %>
-        <h4 class = "badge badge-warning">HP</h4>
-      <% end %>
+      
 
       <br /><br />
       <% if current_user.cp?(game) || current_user.wtp?(game) || current_user.hp?(game) %>
@@ -48,6 +30,15 @@
         <div>
           <%= image_tag('default_feature.jpg', class: 'search-image') %>
         </div>
+      <% end %>
+      <% if current_user.cp?(game) %>
+        <h4 class = "badge badge-success">Currently Playing</h4>
+      <% end %>
+      <% if current_user.wtp?(game) %>
+        <h4 class = "badge badge-info">Want To Play</h4>
+      <% end %>
+      <% if current_user.hp?(game) %>
+        <h4 class = "badge badge-warning">Have Played</h4>
       <% end %>
       <br />
       <% if game.humanized_platform.present? %>
